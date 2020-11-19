@@ -1,0 +1,71 @@
+<div class="row">
+  <h1><%= @model.capitalize %> search for '<%= @content %>'</h1>
+
+
+  <% if @model == "user" %>
+    <table class ="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Introduction</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @datas.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+      </tr>
+      <% end %>
+      </tbody>
+
+    </table>
+
+  <% else %>
+    <table class ="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @datas.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag book.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+      <% end %>
+      </tbody>
+
+    </table>
+  <% end %>
+
+</div>
+
+
+
+<!--table テンプレ-->
+<!--<table class ="table">-->
+<!--    <tr>-->
+<!--      <th></th>-->
+<!--      <th></th>-->
+<!--      <th></th>-->
+<!--    </tr>-->
+
+<!--    <　%= @model.each do || %>-->
+<!--    <tr>-->
+<!--      <td></td>-->
+<!--      <td></td>-->
+<!--      <td></td>-->
+<!--    </tr>-->
+<!--    <　% end %>-->
+<!--  </table>-->
+
+

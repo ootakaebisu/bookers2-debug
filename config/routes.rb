@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+  
   root 'homes#top'
   devise_for :users
   get 'home/about' => 'homes#about', as: 'about'
-
-
 
   resources :users, only: [:show,:index,:edit,:update] do
     member do
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
 
   post 'create/:id' => 'relationships#create', as: 'follow' # フォローする
   post 'destroy/:id' => 'relationships#destroy', as: 'unfollow' # フォロー外す
+  
+  get '/search' => 'search#search'
 
 
 end
