@@ -1,0 +1,2 @@
+<!--likes_buttons_< %= @blog.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です-->
+$('comments_<%= @book.id %>').html("<%= j(render partial: 'book_comments/comment', locals: {book: @book}) %>");
