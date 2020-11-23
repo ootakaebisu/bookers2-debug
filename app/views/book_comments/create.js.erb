@@ -1,3 +1,15 @@
 <!--likes_buttons_< %= @blog.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です-->
-$('#comments_<%= @book.id %>').html("<%= j(render partial: 'book_comments/comment', locals: {book: @book}) %>");
+<!--$('#comments_< %= @book.id %>').html("< %= j(render partial: 'book_comments/comment', locals: {book: @book}) %>");-->
+
+<!--実際のアクションはコントローラ内で行われるのでどう変化させたいかを書く-->
+<!--変化させたいid名と変化後の指定をする-->
+<!--@bookはbook_commentコントローラから呼び出し-->
+$("#comments_area").html("<%= j(render 'comment', { book: @book }) %>");
+$("textarea").val('');
+
+
+$("#comments_count").html("<%= j(render 'count', { saved_book: @book }) %>");
+
+
+
 

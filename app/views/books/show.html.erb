@@ -44,25 +44,28 @@
 					</td>
 
 					<td>
-						<%= link_to "コメント数：#{@saved_book.book_comments.count}", book_path(@saved_book.id) %>
+						<div id="comments_count">
+							<!--ここ上書きする（アクション後消えて欲しい、残さない）から部分テンプレート呼び出さない-->
+							<!--< %= render 'book_comments/count', saved_book: @saved_book %>はだめ！-->
+							<%= link_to "コメント数：#{@saved_book.book_comments.count}", book_path(@saved_book.id) %>
+						</div>
 					</td>
 
 				</tr>
 			</table>
 
-			<div id="comments_<%= @book.id %>">
-         <%= render partial: 'book_comments/comment', locals: { book: @book} %>
+			<div id="comments_area">
+         <%= render partial: 'book_comments/comment', locals: { book: @saved_book} %>
+      </div>
+
+      <div>
+      	<!--renderの後に呼び出す部分テンプレート-->
+      	<!--その後に部分テンプレートで使うインスタンス変数を与える（showアクションで定義しているものが使える）-->
+        <%= render partial: 'book_comments/form', locals: { saved_book: @saved_book, book_comment: @book_comment } %>
       </div>
 
 
-			<%= form_with(model:[@saved_book, @book_comment], remote: true) do |f| %>
-		  <div class="row">
-		    <div class="col-sm-12">
-		      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-		    </div>
-		  </div>
-		  <%= f.submit "送信", class: "btn btn-sm btn-base-1 mt-20 pull-right" %>
-		<% end %>
+
 
 	</div>
 </div>

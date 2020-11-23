@@ -1,2 +1,10 @@
 <!--likes_buttons_< %= @blog.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です-->
-$('comments_<%= @book.id %>').html("<%= j(render partial: 'book_comments/comment', locals: {book: @book}) %>");
+<!--$('comments_<　%= @book.id %>').html("<　%= j(render partial: 'book_comments/comment', locals: {book: @book, book_comments: @book_comments}) %>");-->
+<!--$("#comment-<　%= @book_comment.id %>").remove();-->
+
+<!--show54-->
+<!--@bookはbook_commentコントローラから呼び出し-->
+$("#comments_area").html("<%= j(render 'book_comments/comment', { book: @book }) %>");
+$("#comments_count").html("<%= j(render 'count', { saved_book: @book }) %>");
+<!--$('tr#comment-< %= @book_comment.id %>').remove();-->
+
